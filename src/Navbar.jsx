@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Switch } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "./App";
 import brand from "./App";
 
@@ -23,7 +23,7 @@ export default function Navbar(props) {
 
               <li className="nav-item">
                 <NavLink
-                to="/find-charger"
+                to="/make-appointment"
                 activeclassname="navlink-active"
                 className="nav-link"
                 >
@@ -33,7 +33,7 @@ export default function Navbar(props) {
             
               <li className="nav-item">
                 <NavLink
-                  to="/add-station"
+                  to="/appointment-list"
                   activeclassname="navlink-active"
                   className="nav-link"
                 >

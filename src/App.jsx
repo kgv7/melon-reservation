@@ -18,11 +18,11 @@ export default function App() {
 
         <Routes>
  
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" element={<Login />} />
           
-          <Route exact path="/make-appointment" component={MakeAppointment} />
+          <Route exact path="/make-appointment" element={<MakeAppointment />} />
 
-          <Route exact path="/appointment-list" component={ScheduledAppointment} />
+          <Route exact path="/appointment-list" element={<ScheduledAppointment />} />
         </Routes>
       </div>
     </BrowserRouter>
