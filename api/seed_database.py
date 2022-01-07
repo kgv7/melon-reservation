@@ -22,3 +22,12 @@ for i in range(10):
     user_db.append(new_user)
 
 # create appointments
+appointments = []
+for i in range(10):
+    date = fake.date_between('-1y', 'today')
+    print(date)
+    start_time= fake.time()
+    end_time= fake.time()
+    user_id = i+1
+    new_appointment = crud.create_appointment(date, start_time, end_time, user_id)
+    appointments.append(new_appointment)

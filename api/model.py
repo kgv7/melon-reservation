@@ -26,13 +26,12 @@ class Appointment(db.Model):
     __tablename__ = 'appointments'
 
     appointment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.String(30), nullable=False)
     date = db.Column(db.Date, nullable=False, default=datetime.date)
-    start_time = db.Column(db.Date, nullable=False, default=datetime.time)
-    end_time = db.Column(db.Date, nullable=False, default=datetime.time)
+    start_time = db.Column(db.Time, nullable=False, default=datetime.time)
+    end_time = db.Column(db.Time, nullable=False, default=datetime.time)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
-    user = db.relationship('Appointment', back_populates='appointment')
+    user = db.relationship('User', back_populates='appointment')
 
 
     def __repr__(self):
