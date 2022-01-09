@@ -13,9 +13,11 @@ module.exports = {
     static: path.join(__dirname, "src"),
     historyApiFallback: true,
     proxy: {
-      "/api/": "http://localhost:5001",
+      '/api': {
+      target: 'http://localhost:5001',
     },
-  },
+  }
+},
   module: {
     rules: [
       {

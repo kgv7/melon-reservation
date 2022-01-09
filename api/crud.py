@@ -13,6 +13,13 @@ def create_user(username):
 
     return user
 
+def verify_user(username):
+    """Verify user has account in system."""
+
+    user = User.query.filter_by(username=username).first()
+
+    return user
+
 def create_appointment(date, start_time, end_time, user_id):
     """Creates an appointment."""
     appointment = Appointment(date=date, start_time=start_time, end_time=end_time, user_id=user_id)
