@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import {useHistory} from "react-router-dom"
+import regeneratorRuntime from "regenerator-runtime";
 
 export default function Login() {
 
     const [username, getUsername] = useState({})
+    const history = useHistory();
+    const routeForm = () => {
+      history.push("/make-appointment"); 
+      history.go(0);
+    }
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -32,7 +39,7 @@ export default function Login() {
           console.log(sessionStorage.getItem("token"))
   
           if (data) {
-            // go to new page
+            routeForm()
           }
           
           return data;

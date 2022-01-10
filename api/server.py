@@ -44,12 +44,23 @@ def login_user():
                         username=user.username,
                         user_id=user.user_id,)
 
-@app.route("/api/appointment-list")
+@app.route("/api/appointment-list-<user_id>")
 def get_appointment_list(user_id):
 
-    crud.get_appointment_by_user(user_id)
+    appointment_list = crud.get_appointment_by_user(user_id)
 
-    pass
+    print(appointment_list)
+
+    if not appointment_list:
+        return jsonify({"msg": "There are no appointments scheduled."})
+    else:
+        
+        for item in appointment_list:
+            [appt_id, date, start_time, end_time, user_id] = appointment_list
+        
+        return jsonify(date = date,
+                        start_time = start_time,
+                        end_time = end_time)
 
 
 @app.route("/", defaults={"path": ""})

@@ -27,7 +27,7 @@ export default function Navbar(props) {
                 activeclassname="navlink-active"
                 className="nav-link"
                 >
-                  Schedule Appointment
+                  Schedule Tasting
                 </NavLink>
               </li>
             

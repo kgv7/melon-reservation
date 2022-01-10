@@ -1,42 +1,30 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+
 
 
 export default function ScheduledAppointment() {
 
-    // const [appointmentList, getAppointmentList] = useState();
+    const [appointmentList, getAppointmentList] = useState([]);
 
-    const appointmentList = () => { 
-        try{
-        const resp = await fetch('/api/appointment-list', {
-            method: 'POST',
-            headers: {"Content-Type":"application/json"},
-            })
-        if (resp.status !== 200) {
-            alert("There has been an error");
-            return false;
-        }
-      
-        const data = await resp.json();
-        sessionStorage.setItem("token", data.access_token);
-        sessionStorage.setItem("username", data.username);
-        sessionStorage.setItem("user_id", data.user_id)
-        // alert("You are logged in")
-        console.log(sessionStorage.getItem("token"))
-        
-        return data;
-      }
-      catch(error){
-        console.error("THERE WAS AN ERROR!!!", error)
-      };
-    };
-}
+    const userId = sessionStorage.getItem("user_id")
 
-
+    useEffect(() => {
+        fetch(`/api/appointment-list-${userId}`)
+        .then((response) => response.json())
+        .then((appointmentData) => {
+            console.log(appointmentData)
+            getAppointmentList(appointmentData);
+        })
+        }, []);
+    
+    const appointments = appointmentList.map(appointmentList => <li value={appointmentList}>{appointmentList}</li>)
 
     return(
     <div>
         <h1>View Appointments</h1>
-        {appointmentList}
+            <ul>
+                {appointments}
+            </ul>
     </div>
     )
 }
